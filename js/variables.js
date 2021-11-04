@@ -34,6 +34,10 @@ function mostrar(mensaje) {
 	alert(`Puntaje: ${mensaje}`)
 }
 
+function subirNivel(nivel) {
+	alert(`Has subido al nivel ${nivel}!`)
+}
+
 //1er pregunta
 pregunta("¿Quien es el actor principal de la película 'Misión Imposible'?", "Tom Cruise");
 mostrar(puntaje);
@@ -45,3 +49,7 @@ mostrar(puntaje);
 //3er pregunta
 pregunta("¿Cual es el río mas caudaloso del mundo?", "Amazonas");
 mostrar(puntaje);
+
+//Siguiente nivel
+subirNivel(2);
+
