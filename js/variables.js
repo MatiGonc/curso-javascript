@@ -53,3 +53,21 @@ mostrar(puntaje);
 //Siguiente nivel
 subirNivel(2);
 
+//Creador de preguntas
+class Preguntas {
+	constructor (duda, resolucion) {
+		this.duda = duda;
+		this.resolucion = resolucion;
+	}
+	agregarPregunta () {
+		pregunta(this.duda, this.resolucion);
+	}
+}
+
+const pregunta4 = new Preguntas("¿Cuantos planetas hay en el Sistema Solar?", "8");
+pregunta4.agregarPregunta();
+mostrar(puntaje);
+
+const pregunta5 = new Preguntas("¿Cual es el pais mas grande del mundo?", "Rusia");
+pregunta5.agregarPregunta();
+mostrar(puntaje);
