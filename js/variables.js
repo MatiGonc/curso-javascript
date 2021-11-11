@@ -1,22 +1,26 @@
 //Primera Identificación
-let nombreUsuario = prompt("Ingrese su nombre:");
+let nombreUsuario = prompt("Ingrese su nombre de usuario:");
 if (nombreUsuario !=""){
-	let mensajeBienvenida = "Bienvenido/a" + " " + nombreUsuario + "!";
-	alert(mensajeBienvenida);
-	console.log(mensajeBienvenida);
+	alert("Acceso concedido.");
 }else{
 	console.log("Error: Nombre de usuario inválido.");
 	alert("Error: Nombre de usuario inválido.");
+
 }
 
 //Comienzo del juego
-alert("Bienvenidos a 'PREGUNTAS Y RESPUESTAS'!")
-alert("Reglas: Tienes 3 intentos por pregunta, obtienes 1 punto por cada respuesta correcta.")
+alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombreUsuario}, comencemos esta aventura!`);
+alert("Reglas: Tienes 3 intentos por pregunta, obtienes 1 punto por cada respuesta correcta.");
 
 //Puntaje inicial
-puntaje = 0
+puntaje = 0;
 
-//Funciones
+//Funcion mostrar puntaje
+function mostrar(mensaje) {
+	alert(`Puntaje: ${mensaje}`)
+}
+
+//Funcion realizar pregunta
 function pregunta(interrogante, solucion) {
 	for (let i = 0; i < 3; i++){
 		let respuesta = prompt(interrogante);
@@ -28,33 +32,11 @@ function pregunta(interrogante, solucion) {
 			alert("Respuesta incorrecta!");
 		}
 	}
+	mostrar(puntaje);
 }
-
-function mostrar(mensaje) {
-	alert(`Puntaje: ${mensaje}`)
-}
-
-function subirNivel(nivel) {
-	alert(`Has subido al nivel ${nivel}!`)
-}
-
-//1er pregunta
-pregunta("¿Quien es el actor principal de la película 'Misión Imposible'?", "Tom Cruise");
-mostrar(puntaje);
-
-//2da pregunta
-pregunta("¿Cual es el planeta mas caliente del Sistema Solar?", "Venus");
-mostrar(puntaje);
-
-//3er pregunta
-pregunta("¿Cual es el río mas caudaloso del mundo?", "Amazonas");
-mostrar(puntaje);
-
-//Siguiente nivel
-subirNivel(2);
 
 //Creador de preguntas
-class Preguntas {
+class Pregunta {
 	constructor (duda, resolucion) {
 		this.duda = duda;
 		this.resolucion = resolucion;
@@ -64,10 +46,15 @@ class Preguntas {
 	}
 }
 
-const pregunta4 = new Preguntas("¿Cuantos planetas hay en el Sistema Solar?", "8");
-pregunta4.agregarPregunta();
-mostrar(puntaje);
+//Array preguntas
+const preguntas = [];
+preguntas.push(new Pregunta("¿Quien es el actor principal de la película 'Misión Imposible'?", "Tom Cruise"));
+preguntas.push(new Pregunta("¿Cual es el planeta mas caliente del Sistema Solar?", "Venus"));
+preguntas.push(new Pregunta("¿Cual es el río mas caudaloso del mundo?", "Amazonas"));
+preguntas.push(new Pregunta("¿Cuantos planetas hay en el Sistema Solar?", "8"));
+preguntas.push(new Pregunta("¿Cual es el pais mas grande del mundo?", "Rusia"));
 
-const pregunta5 = new Preguntas("¿Cual es el pais mas grande del mundo?", "Rusia");
-pregunta5.agregarPregunta();
-mostrar(puntaje);
+for (const pregunta of preguntas)
+	pregunta.agregarPregunta();
+
+
