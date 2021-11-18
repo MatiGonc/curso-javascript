@@ -1,12 +1,8 @@
 //Primera Identificación
-let nombreUsuario = prompt("Ingrese su nombre de usuario:");
-if (nombreUsuario !=""){
-	alert("Acceso concedido.");
-}else{
-	console.log("Error: Nombre de usuario inválido.");
-	alert("Error: Nombre de usuario inválido.");
-
-}
+let nombreUsuario = "";
+do {
+	nombreUsuario = prompt("Ingrese su nombre de usuario:")
+}while (nombreUsuario === "");
 
 //Comienzo del juego
 alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombreUsuario}, comencemos esta aventura!`);
@@ -56,5 +52,23 @@ preguntas.push(new Pregunta("¿Cual es el pais mas grande del mundo?", "Rusia"))
 
 for (const pregunta of preguntas)
 	pregunta.agregarPregunta();
+
+//Ordenar Array
+preguntas.sort();
+console.log(preguntas.sort());
+
+preguntas.sort(function (a,b) {
+	if (a.resolucion > b.resolucion){
+		return 1;
+	}
+	if (a.resolucion < b.resolucion){
+		return -1;
+	}
+	return 0;
+});
+console.log(preguntas.sort());
+
+
+
 
 
