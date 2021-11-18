@@ -50,8 +50,9 @@ preguntas.push(new Pregunta("¿Cual es el río mas caudaloso del mundo?", "Amazo
 preguntas.push(new Pregunta("¿Cuantos planetas hay en el Sistema Solar?", "8"));
 preguntas.push(new Pregunta("¿Cual es el pais mas grande del mundo?", "Rusia"));
 
-for (const pregunta of preguntas)
+for (const pregunta of preguntas){
 	pregunta.agregarPregunta();
+}
 
 //Ordenar Array
 preguntas.sort();
@@ -68,7 +69,13 @@ preguntas.sort(function (a,b) {
 });
 console.log(preguntas.sort());
 
-
+//DOM
+let insertarPreguntas = document.getElementById("juego");
+for (const pregunta of preguntas){
+	let p = document.createElement("p");
+	p.innerHTML = pregunta.duda;
+	insertarPreguntas.appendChild(p);
+}
 
 
 
