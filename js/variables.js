@@ -1,15 +1,16 @@
 //Primera Identificación
 let nombreUsuario = "";
-do {
-	nombreUsuario = prompt("Ingrese su nombre de usuario:")
-}while (nombreUsuario === "");
-
-//Comienzo del juego
-alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombreUsuario}, comencemos esta aventura!`);
-alert("Reglas: Tienes 3 intentos por pregunta, obtienes 1 punto por cada respuesta correcta.");
+let botonUsuario = document.getElementById("botonUsuario");
+botonUsuario.onclick = () => {
+	do {
+		nombreUsuario = prompt("Ingrese su nombre de usuario:")
+	}while (nombreUsuario === "");
+	alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombreUsuario}, comencemos esta aventura!`);
+	alert("Reglas: Tienes 3 intentos por pregunta, obtienes 1 punto por cada respuesta correcta.");
+};
 
 //Puntaje inicial
-puntaje = 0;
+let puntaje = 0;
 
 //Funcion mostrar puntaje
 function mostrar(mensaje) {
@@ -50,10 +51,6 @@ preguntas.push(new Pregunta("¿Cual es el río mas caudaloso del mundo?", "Amazo
 preguntas.push(new Pregunta("¿Cuantos planetas hay en el Sistema Solar?", "8"));
 preguntas.push(new Pregunta("¿Cual es el pais mas grande del mundo?", "Rusia"));
 
-for (const pregunta of preguntas){
-	pregunta.agregarPregunta();
-}
-
 //Ordenar Array
 preguntas.sort();
 console.log(preguntas.sort());
@@ -75,6 +72,12 @@ for (const pregunta of preguntas){
 	let p = document.createElement("p");
 	p.innerHTML = pregunta.duda;
 	insertarPreguntas.appendChild(p);
+
+	let button = document.createElement("button");
+	button.innerHTML = "Responder";
+	insertarPreguntas.appendChild(button);
+	button.onclick = () => pregunta.agregarPregunta();
+	
 }
 
 
