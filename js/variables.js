@@ -1,5 +1,20 @@
+let inputUsuario = document.getElementById("logIn");
+let input = document.createElement("input");
+inputUsuario.appendChild(input);
+
+let botonUsuario = document.getElementById("botonUsuario");
+botonUsuario.onclick = () => {
+	botonUsuario.addEventListener("submit", guardarUsuario);
+	function guardarUsuario() {
+		localStorage.setItem("nombre", parseInt(input));
+		alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombre}, comencemos esta aventura!`);
+	}
+	
+}
+
+
 //Primera Identificación
-let nombreUsuario = "";
+/*let nombreUsuario = "";
 let botonUsuario = document.getElementById("botonUsuario");
 botonUsuario.onclick = () => {
 	do {
@@ -7,7 +22,7 @@ botonUsuario.onclick = () => {
 	}while (nombreUsuario === "");
 	alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombreUsuario}, comencemos esta aventura!`);
 	alert("Reglas: Tienes 3 intentos por pregunta, obtienes 1 punto por cada respuesta correcta.");
-};
+};*/
 
 //Puntaje inicial
 let puntaje = 0;
