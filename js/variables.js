@@ -4,11 +4,8 @@ inputUsuario.appendChild(input);
 
 let botonUsuario = document.getElementById("botonUsuario");
 botonUsuario.onclick = () => {
-	botonUsuario.addEventListener("submit", guardarUsuario);
-	function guardarUsuario() {
-		localStorage.setItem("nombre", parseInt(input));
-		alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombre}, comencemos esta aventura!`);
-	}
+	localStorage.setItem("nombre", `${input}`);
+	alert(`Bienvenido/a a "Conocimiento Cósmico" ${input}, comencemos esta aventura!`);
 	
 }
 
