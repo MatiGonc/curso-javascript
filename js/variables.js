@@ -1,25 +1,59 @@
-let inputUsuario = document.getElementById("logIn");
-let input = document.createElement("input");
-inputUsuario.appendChild(input);
-
-let botonUsuario = document.getElementById("botonUsuario");
-botonUsuario.onclick = () => {
-	localStorage.setItem("nombre", `${input}`);
-	alert(`Bienvenido/a a "Conocimiento Cósmico" ${input}, comencemos esta aventura!`);
+//Array Usuarios
+const usuarios = [
+	{
+		nombreUsuario: "Admin",
+		passwordUsuario: "password1234"
+	},
 	
+	{
+		nombreUsuario: "Admin2",
+		passwordUsuario: "password5678"
+	}
+]
+
+//Funcion Logear
+function login() {
+	let nombreUsuario = document.getElementById("logUsername").value;
+	let passwordUsuario = document.getElementById("logPassword").value;
+
+	for (i = 0; i < usuarios.length; i++) {
+		if (nombreUsuario == usuarios[i].nombreUsuario && passwordUsuario == usuarios[i].passwordUsuario) {
+			console.log("Acceso Permitido");
+			return
+		}
+	}
+	console.log("Nombre o constraseña incorrectos");
 }
 
+let loginUsuario = document.getElementById("logIn");
+loginUsuario.onclick = login();
 
-//Primera Identificación
-/*let nombreUsuario = "";
-let botonUsuario = document.getElementById("botonUsuario");
-botonUsuario.onclick = () => {
-	do {
-		nombreUsuario = prompt("Ingrese su nombre de usuario:")
-	}while (nombreUsuario === "");
-	alert(`Bienvenido/a a "Conocimiento Cósmico" ${nombreUsuario}, comencemos esta aventura!`);
-	alert("Reglas: Tienes 3 intentos por pregunta, obtienes 1 punto por cada respuesta correcta.");
-};*/
+
+//Funcion Registrar
+function registro() {
+	let registrarUsuario = document.getElementById("newUsername").value;
+	let registrarPassword = document.getElementById("newPassword").value;
+	let nuevoUsuario = {
+		nombreUsuario: registrarUsuario,
+		passwordUsuario: registrarPassword
+	}
+
+	for (i = 0; i < usuarios.length; i++) {
+		if (registrarUsuario == usuarios[i].nombreUsuario) {
+			console.log("El nombre de usuario seleccionado no esta disponible");
+			return
+		} else if (registrarPassword.length < 8) {
+			console.log("La contraseña debe tener mas de 8 caracteres");
+		}
+	}
+
+	usuarios.push(nuevoUsuario);
+	console.log(usuarios);
+}
+
+let crearUsuario = document.getElementById("crearUsuario");
+crearUsuario.onclick = registro();
+
 
 //Puntaje inicial
 let puntaje = 0;
@@ -64,6 +98,7 @@ preguntas.push(new Pregunta("¿Cuantos planetas hay en el Sistema Solar?", "8"))
 preguntas.push(new Pregunta("¿Cual es el pais mas grande del mundo?", "Rusia"));
 
 //Ordenar Array
+/*
 preguntas.sort();
 console.log(preguntas.sort());
 
@@ -77,7 +112,7 @@ preguntas.sort(function (a,b) {
 	return 0;
 });
 console.log(preguntas.sort());
-
+*/
 //DOM
 let insertarPreguntas = document.getElementById("juego");
 for (const pregunta of preguntas){
