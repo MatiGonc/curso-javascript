@@ -113,17 +113,17 @@ preguntas.sort(function (a,b) {
 });
 console.log(preguntas.sort());
 */
-//DOM
-let insertarPreguntas = document.getElementById("juego");
-for (const pregunta of preguntas){
-	let p = document.createElement("p");
-	p.innerHTML = pregunta.duda;
-	insertarPreguntas.appendChild(p);
 
-	let button = document.createElement("button");
-	button.innerHTML = "Responder";
-	insertarPreguntas.appendChild(button);
-	button.onclick = () => pregunta.agregarPregunta();
+
+
+for (const pregunta of preguntas){
+	$("#juego") .append(`<div>
+							<p>${pregunta.duda}<p>
+							<input><button id="button">"Responder"<button>
+						<div>
+	`);
+
+	$('#button').on('click', () => pregunta.agregarPregunta());
 	
 }
 
